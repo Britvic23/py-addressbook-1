@@ -26,3 +26,17 @@ class ContactManager:
             message = generate_log_message(ex, LOG_ERROR)
             logger.save_message(message)
             return []
+        
+    def get_contact(self, contact_id: int):
+        try:
+            response = requests.get(f'{self.base_url}{self.contacts_url}/{contact_id}')
+            if response.status_code == 200:
+                return response.json()
+            else:
+                return []
+        except Exception as ex:
+            logger = LoggingManager()
+            message = generate_log_message(ex, LOG_ERROR)
+            logger.save_message(message)
+            return []
+        
