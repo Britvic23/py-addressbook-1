@@ -2,7 +2,7 @@ import time
 
 from UI.components.console_components.main_menu import main_menu
 from UI.components.console_components.create_company_form import create_company_form
-
+from services.contact_services.contact_managers import ContactManager
 
 def start_app():
     while True:
@@ -16,6 +16,11 @@ def start_app():
             case 2:
                 print('Izabrali smo izbor DVA')
                 time.sleep(2)
+            case 3:
+                contact_manager = ContactManager()
+                contacts = contact_manager.get_all()
+                print(contacts)
+                input('\nZa nastavak pritisnite tipku ENTER\n')
             
             case 0:
                 return
